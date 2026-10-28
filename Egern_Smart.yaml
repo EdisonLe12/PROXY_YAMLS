@@ -1051,12 +1051,12 @@ rules:
 - rule_set:
     match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Facebook.yaml
     policy: AI
-    name: Facebook / Meta 规则集（Egern）
+    name: Facebook
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Instagram.yaml
     policy: AI
-    name: Instagram 规则集（Egern）
+    name: Instagram
     update_interval: 86400
 - domain_suffix:
     match: threads.net
@@ -1077,29 +1077,6 @@ rules:
     policy: YouTube
     name: YouTube
     update_interval: 86400
-- rule_set:
-    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/apns.yaml
-    policy: G&A-Push
-    name: Apple 推送服务
-    update_interval: 86400
-- rule_set:
-    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/googlefcm.yaml
-    policy: G&A-Push
-    name: Google FCM 推送
-    update_interval: 86400
-- domain_suffix:
-    match: xn--ngstr-lra8j.com
-    policy: Google
-    name: Google Play 服务
-- domain_suffix:
-    match: googleapis.cn
-    policy: Google
-    name: Google 服务
-- rule_set:
-    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/google.yaml
-    policy: Google
-    name: Google 全家桶
-    update_interval: 86400
 - domain_keyword:
     match: mobai
     policy: Emby
@@ -1112,7 +1089,7 @@ rules:
 - rule_set:
     match: https://raw.githubusercontent.com/Repcz/EgernRules/X/Rules/Bing/Bing.yaml
     policy: Bing
-    name: Bing 规则集
+    name: Bing
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/onedrive.yaml
@@ -1122,12 +1099,12 @@ rules:
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/microsoft.yaml
     policy: Microsoft
-    name: 微软国际服务
+    name: 微软
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/apple.yaml
     policy: Apple
-    name: Apple 国际服务
+    name: Apple
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/speedtest.yaml
@@ -1142,34 +1119,28 @@ rules:
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/crypto.yaml
     policy: Crypto
-    name: 加密货币交易平台
+    name: Crypto
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Telegram.yaml
     policy: Proxy
-    name: Telegram（普通代理，不走 AI）
+    name: Telegram
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Twitter.yaml
     policy: Proxy
-    name: X / Twitter（普通代理，不走 AI）
+    name: X / Twitter
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/gits.yaml
     policy: Proxy
-    name: Git 仓库服务
+    name: Git 
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/proxy.yaml
     policy: Proxy
     name: 国际域名代理
     update_interval: 86400
-- not:
-    match:
-      geoip:
-        match: CN
-    policy: Proxy
-    name: Geo-!CN
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cn.yaml
     policy: 国内直连
@@ -1180,13 +1151,8 @@ rules:
     policy: 国内直连
     name: 中国大陆 IP 地址集直连
     update_interval: 86400
-- geoip:
-    match: CN
-    policy: 国内直连
-    no_resolve: true
-    name: China GeoIP 直连
 - default:
     policy: 漏网之鱼
-    name: 最终兜底
+    name: 漏网之鱼
 default_subscription_group: 优质服务商
 default_proxy_group: Proxy
