@@ -1,0 +1,1183 @@
+ipv6: true
+vif_only: true
+block_quic: true
+close_connections_on_policy_change: true
+hide_vpn_icon: false
+geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+asn_db_url: https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
+proxy_latency_test_url: https://www.gstatic.com/generate_204
+direct_latency_test_url: https://connectivitycheck.platform.hicloud.com/generate_204
+compat_route: false
+include_all_networks: false
+include_apns: false
+include_cellular_services: false
+include_local_networks: false
+vif_excluded_routes:
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+- 127.0.0.0/8
+- ::1/128
+- fc00::/7
+- fe80::/10
+bypass_tunnel_proxy:
+- '*.lan'
+- '*.local'
+real_ip_domains:
+- '*.lan'
+- '*.local'
+- '*.cn'
+- '*.push.apple.com'
+- services.googleapis.cn
+hijack_dns:
+- '*:53'
+dns:
+  bootstrap:
+  - system
+  - 223.5.5.5
+  - 119.29.29.29
+  - 180.184.1.1
+  upstreams:
+    国内:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    国外:
+    - https://8.8.8.8/dns-query
+    - https://1.1.1.1/dns-query
+    系统DNS:
+    - system
+  forward:
+  - domain_suffix:
+      match: cn
+      value: 国内
+  - domain_suffix:
+      match: lan
+      value: 系统DNS
+  - domain_suffix:
+      match: local
+      value: 系统DNS
+  - domain_suffix:
+      match: home.arpa
+      value: 系统DNS
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cn.yaml
+      value: 国内
+      update_interval: 86400
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/proxy.yaml
+      value: 国外
+      update_interval: 86400
+  - domain_wildcard:
+      match: '*'
+      value: 国外
+  hosts:
+    services.googleapis.cn: services.googleapis.com
+  proxy_nameservers:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  skip_tls_verify: false
+policy_groups:
+- select:
+    name: Proxy
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Proxy.png
+    hidden: false
+- select:
+    name: AI
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+    hidden: false
+- select:
+    name: Bing
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Bing.png
+    hidden: false
+- select:
+    name: Streaming
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png
+    hidden: false
+- select:
+    name: YouTube
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/YouTube.png
+    hidden: false
+- select:
+    name: TikTok
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/TikTok_1.png
+    hidden: false
+- select:
+    name: Emby
+    policies:
+    - Emby专用-手选
+    - Emby专用-智能
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+    hidden: false
+- select:
+    name: Speedtest
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Speedtest.png
+    hidden: false
+- select:
+    name: PayPal
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/PayPal.png
+    hidden: false
+- select:
+    name: Crypto
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/chaoscard/proxyrules/master/Bitcoin.png
+    hidden: false
+- select:
+    name: G&A-Push
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://img.icons8.com/fluency/256/push-notifications.png
+    hidden: false
+- select:
+    name: Apple
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Apple.png
+    hidden: false
+- select:
+    name: Microsoft
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+    hidden: false
+- select:
+    name: 漏网之鱼
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+    hidden: false
+- select:
+    name: Google
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Google_Search.png
+    hidden: false
+- fallback:
+    name: 香港-故转
+    policies:
+    - 🇭🇰香港-手选
+    - 🇭🇰香港-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- select:
+    name: 🇭🇰香港-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+    hidden: false
+- auto_test:
+    name: 香港-优质自动
+    policies:
+    - 优质服务商
+    flatten: true
+    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+    hidden: true
+- auto_test:
+    name: 香港-次优自动
+    policies:
+    - 次优服务商
+    flatten: true
+    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+    hidden: true
+- auto_test:
+    name: 香港-备用自动
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+    hidden: true
+- auto_test:
+    name: 香港-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+    hidden: true
+- smart:
+    name: 🇭🇰香港-智能
+    policies:
+    - 香港-优质自动
+    - 香港-次优自动
+    - 香港-备用自动
+    - 香港-落地自动
+    priorities:
+      ^香港-优质自动$: 0
+      ^香港-次优自动$: 1.0
+      ^香港-备用自动$: 1.5
+      ^香港-落地自动$: 2.0
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+    hidden: true
+- fallback:
+    name: 日本-故转
+    policies:
+    - 🇯🇵日本-手选
+    - 🇯🇵日本-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- select:
+    name: 🇯🇵日本-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+    hidden: false
+- auto_test:
+    name: 日本-优质自动
+    policies:
+    - 优质服务商
+    flatten: true
+    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+    hidden: true
+- auto_test:
+    name: 日本-次优自动
+    policies:
+    - 次优服务商
+    flatten: true
+    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+    hidden: true
+- auto_test:
+    name: 日本-备用自动
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+    hidden: true
+- auto_test:
+    name: 日本-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+    hidden: true
+- smart:
+    name: 🇯🇵日本-智能
+    policies:
+    - 日本-优质自动
+    - 日本-次优自动
+    - 日本-备用自动
+    - 日本-落地自动
+    priorities:
+      ^日本-优质自动$: 0
+      ^日本-次优自动$: 1.0
+      ^日本-备用自动$: 1.5
+      ^日本-落地自动$: 2.0
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+    hidden: true
+- fallback:
+    name: 狮城-故转
+    policies:
+    - 🇸🇬狮城-手选
+    - 🇸🇬狮城-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- select:
+    name: 🇸🇬狮城-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+    hidden: false
+- auto_test:
+    name: 狮城-优质自动
+    policies:
+    - 优质服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+    hidden: true
+- auto_test:
+    name: 狮城-次优自动
+    policies:
+    - 次优服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+    hidden: true
+- auto_test:
+    name: 狮城-备用自动
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+    hidden: true
+- auto_test:
+    name: 狮城-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+    hidden: true
+- smart:
+    name: 🇸🇬狮城-智能
+    policies:
+    - 狮城-优质自动
+    - 狮城-次优自动
+    - 狮城-备用自动
+    - 狮城-落地自动
+    priorities:
+      ^狮城-优质自动$: 0
+      ^狮城-次优自动$: 1.0
+      ^狮城-备用自动$: 1.5
+      ^狮城-落地自动$: 2.0
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+    hidden: true
+- fallback:
+    name: 美国-故转
+    policies:
+    - 🇺🇸美国-手选
+    - 🇺🇸美国-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- select:
+    name: 🇺🇸美国-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: false
+- auto_test:
+    name: 美国-优质自动
+    policies:
+    - 优质服务商
+    flatten: true
+    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: true
+- auto_test:
+    name: 美国-次优自动
+    policies:
+    - 次优服务商
+    flatten: true
+    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: true
+- auto_test:
+    name: 美国-备用自动
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: true
+- auto_test:
+    name: 美国-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: true
+- smart:
+    name: 🇺🇸美国-智能
+    policies:
+    - 美国-优质自动
+    - 美国-次优自动
+    - 美国-备用自动
+    - 美国-落地自动
+    priorities:
+      ^美国-优质自动$: 0
+      ^美国-次优自动$: 1.0
+      ^美国-备用自动$: 1.5
+      ^美国-落地自动$: 2.0
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: true
+- fallback:
+    name: 台湾-故转
+    policies:
+    - 🇹🇼台湾-手选
+    - 🇹🇼台湾-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- select:
+    name: 🇹🇼台湾-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+    hidden: false
+- auto_test:
+    name: 台湾-优质自动
+    policies:
+    - 优质服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+    hidden: true
+- auto_test:
+    name: 台湾-次优自动
+    policies:
+    - 次优服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+    hidden: true
+- auto_test:
+    name: 台湾-备用自动
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+    hidden: true
+- auto_test:
+    name: 台湾-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+    hidden: true
+- smart:
+    name: 🇹🇼台湾-智能
+    policies:
+    - 台湾-优质自动
+    - 台湾-次优自动
+    - 台湾-备用自动
+    - 台湾-落地自动
+    priorities:
+      ^台湾-优质自动$: 0
+      ^台湾-次优自动$: 1.0
+      ^台湾-备用自动$: 1.5
+      ^台湾-落地自动$: 2.0
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+    hidden: true
+- fallback:
+    name: 家宽-故转
+    policies:
+    - 家宽-手选
+    - 家宽-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://img.icons8.com/fluency/256/home.png
+- select:
+    name: 家宽-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: false
+- auto_test:
+    name: 家宽-优质自动
+    policies:
+    - 优质服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- auto_test:
+    name: 家宽-次优自动
+    policies:
+    - 次优服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- auto_test:
+    name: 家宽-备用自动
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- auto_test:
+    name: 家宽-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- smart:
+    name: 家宽-智能
+    policies:
+    - 家宽-优质自动
+    - 家宽-次优自动
+    - 家宽-备用自动
+    - 家宽-落地自动
+    priorities:
+      ^家宽-优质自动$: 0
+      ^家宽-次优自动$: 1.0
+      ^家宽-备用自动$: 1.5
+      ^家宽-落地自动$: 2.0
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- select:
+    name: Reality
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)Reality
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Server.png
+    hidden: false
+- fallback:
+    name: 低倍率-故转
+    policies:
+    - 低倍率-手选
+    - 低倍率-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+- select:
+    name: 低倍率-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)^(?!.*(动态|打机))(?=.*(?:(?<![0-9.])(?:0\.01|0\.[1-8])(?:x|倍)?(?![0-9.])|下载|实验)).*$
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+    hidden: false
+- smart:
+    name: 低倍率-智能
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)^(?!.*(动态|打机))(?=.*(?:(?<![0-9.])(?:0\.01|0\.[1-8])(?:x|倍)?(?![0-9.])|下载|实验)).*$
+    priorities:
+      (?i)(?<![0-9.])0\.01(?![0-9.]): 0
+      (?i)(?<![0-9.])0\.1(?![0-9.]): 1.0
+      (?i)(?<![0-9.])0\.2(?![0-9.]): 1.5
+      实验: 1.5
+      (?i)(?<![0-9.])0\.3(?![0-9.]): 2.0
+      (?i)(?<![0-9.])0\.4(?![0-9.]): 2.5
+      (?i)(?<![0-9.])0\.5(?![0-9.]): 3.0
+      (?i)(?<![0-9.])0\.6(?![0-9.]): 3.5
+      (?i)(?<![0-9.])0\.7(?![0-9.]): 4.0
+      (?i)(?<![0-9.])0\.8(?![0-9.]): 4.5
+      下载: 4.5
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+    hidden: true
+- select:
+    name: 高倍率-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)(?<![0-9.])(?:x(?:0\.9\d*|[1-9](?:\.\d+)?|10(?:\.0+)?)|(?:0\.9\d*|[1-9](?:\.\d+)?|10(?:\.0+)?|高级)x)(?![0-9.])
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+    hidden: false
+- select:
+    name: 冷门节点-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)^(?!.*(🇭🇰|香港|hong\s*kong|HKG|(?<![A-Za-z])HK(?![A-Za-z])|🇸🇬|新加坡|狮城|singapore|SIN|(?<![A-Za-z])SG(?![A-Za-z])|🇯🇵|日本|japan|(?<![A-Za-z])JP(?![A-Za-z])|🇹🇼|台湾|taiwan|(?<![A-Za-z])TW(?![A-Za-z])|🇺🇸|美国|united\s*states|usa|(?<![A-Za-z])US(?![A-Za-z])|剩余|重置|套餐|距离|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|CF|家宽|优选|免费)).+$
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png
+    hidden: false
+- select:
+    name: 全部节点-手选
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    - 落地服务商
+    flatten: true
+    filter: (?i)^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|剩余|重置|套餐|距离|免费|家宽)).+$
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+    hidden: false
+- select:
+    name: 链式代理
+    policies:
+    - 链式香港
+    - 链式日本
+    - 链式狮城
+    - 链式台湾
+    - 链式美国
+    icon: https://img.icons8.com/fluency/256/workflow.png
+    hidden: true
+- select:
+    name: 链式香港
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    flatten: true
+    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+- select:
+    name: 链式台湾
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+- select:
+    name: 链式日本
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+- select:
+    name: 链式狮城
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+- select:
+    name: 链式美国
+    policies:
+    - 优质服务商
+    - 次优服务商
+    - 备用服务商
+    flatten: true
+    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
+    hidden: true
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+- select:
+    name: Emby专用-手选
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)^(?!.*住宅).+$
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+    hidden: true
+- smart:
+    name: Emby专用-智能
+    policies:
+    - 备用服务商
+    flatten: true
+    filter: (?i)^(?!.*住宅).+$
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+    hidden: true
+- select:
+    name: 国内直连
+    policies:
+    - DIRECT
+    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+    hidden: true
+- external:
+    name: 优质服务商
+    type: select
+    urls:
+    - 填写你的优质服务商
+    filter: (?i)^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|剩余|重置|套餐|距离)).+$
+    update_interval: 86400
+    hidden: true
+- external:
+    name: 次优服务商
+    type: select
+    urls:
+    - 填写你的次优服务商
+    filter: (?i)^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|剩余|重置|套餐|距离)).+$
+    update_interval: 86400
+    hidden: true
+- external:
+    name: 备用服务商
+    type: select
+    urls:
+    - 填写你的备用服务商
+    filter: (?i)^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|剩余|重置|套餐|距离)).+$
+    update_interval: 86400
+    hidden: true
+- external:
+    name: 落地服务商
+    type: select
+    urls:
+    - 填写你的落地服务商
+    filter: (?i)^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|剩余|重置|套餐|距离)).+$
+    update_interval: 86400
+    hidden: true
+    prev_hop: 链式代理
+rules:
+- domain_suffix:
+    match: shlii.io
+    policy: Proxy
+    name: 指定域名代理
+- domain:
+    match: access.pikpakdrive.com
+    policy: REJECT
+    name: PikPak 地区检测域名
+- domain:
+    match: access.mypikpak.com
+    policy: REJECT
+    name: PikPak 地区检测域名
+- domain:
+    match: access.mypikpak.net
+    policy: REJECT
+    name: PikPak 地区检测域名
+- domain:
+    match: access.pikpak.me
+    policy: REJECT
+    name: PikPak 地区检测域名
+- domain_keyword:
+    match: dl-a10b-
+    policy: 国内直连
+    name: PikPak 下载直连
+- domain_keyword:
+    match: dl-z01a-
+    policy: 国内直连
+    name: PikPak 下载直连
+- domain_regex:
+    match: ^dl-[A-Za-z0-9-]+\.mypikpak\.com$
+    policy: 国内直连
+    name: PikPak 下载直连
+- domain_suffix:
+    match: lan
+    policy: 国内直连
+    name: 本地域名直连
+- domain_suffix:
+    match: local
+    policy: 国内直连
+    name: 本地域名直连
+- domain_suffix:
+    match: home.arpa
+    policy: 国内直连
+    name: 本地域名直连
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/ai.yaml
+    policy: AI
+    name: AI 服务
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Facebook.yaml
+    policy: AI
+    name: Facebook / Meta 规则集（Egern）
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Instagram.yaml
+    policy: AI
+    name: Instagram 规则集（Egern）
+    update_interval: 86400
+- domain_suffix:
+    match: threads.net
+    policy: AI
+    name: Threads（Meta）
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/spotify.yaml
+    policy: Streaming
+    name: Spotify
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/tiktok.yaml
+    policy: TikTok
+    name: TikTok
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/youtube.yaml
+    policy: YouTube
+    name: YouTube
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/apns.yaml
+    policy: G&A-Push
+    name: Apple 推送服务
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/googlefcm.yaml
+    policy: G&A-Push
+    name: Google FCM 推送
+    update_interval: 86400
+- domain_suffix:
+    match: xn--ngstr-lra8j.com
+    policy: Google
+    name: Google Play 服务
+- domain_suffix:
+    match: googleapis.cn
+    policy: Google
+    name: Google 服务
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/google.yaml
+    policy: Google
+    name: Google 全家桶
+    update_interval: 86400
+- domain_keyword:
+    match: mobai
+    policy: Emby
+    name: Emby 服务
+- rule_set:
+    match: https://github.com/Repcz/Tool/raw/X/Egern/Rules/Emby.yaml
+    policy: Emby
+    name: Emby 规则集
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/Repcz/EgernRules/X/Rules/Bing/Bing.yaml
+    policy: Bing
+    name: Bing 规则集
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/onedrive.yaml
+    policy: Microsoft
+    name: OneDrive
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/microsoft.yaml
+    policy: Microsoft
+    name: 微软国际服务
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/apple.yaml
+    policy: Apple
+    name: Apple 国际服务
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/speedtest.yaml
+    policy: Speedtest
+    name: Speedtest
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/paypal.yaml
+    policy: PayPal
+    name: PayPal
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/crypto.yaml
+    policy: Crypto
+    name: 加密货币交易平台
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Telegram.yaml
+    policy: Proxy
+    name: Telegram（普通代理，不走 AI）
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Twitter.yaml
+    policy: Proxy
+    name: X / Twitter（普通代理，不走 AI）
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/gits.yaml
+    policy: Proxy
+    name: Git 仓库服务
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/proxy.yaml
+    policy: Proxy
+    name: 国际域名代理
+    update_interval: 86400
+- not:
+    match:
+      geoip:
+        match: CN
+    policy: Proxy
+    name: Geo-!CN
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cn.yaml
+    policy: 国内直连
+    name: 中国大陆域名直连
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cncidr.yaml
+    policy: 国内直连
+    name: 中国大陆 IP 地址集直连
+    update_interval: 86400
+- geoip:
+    match: CN
+    policy: 国内直连
+    no_resolve: true
+    name: China GeoIP 直连
+- default:
+    policy: 漏网之鱼
+    name: 最终兜底
+default_subscription_group: 优质服务商
+default_proxy_group: Proxy

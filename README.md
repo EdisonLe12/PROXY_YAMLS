@@ -1,0 +1,87 @@
+## YAML 更新日志
+
+### 关于 “DNS泄漏” Tips:
+1. **保留 `China-IP,no-resolve`（规则默认 / 隐私与防止DNS泄漏优先）**：
+   * **DNS 隐私机制**：规则匹配时不触发本地 DNS 递归解析反查，海外域名完全交由远端代理服务器进行 DNS 解析，防止本地 DNS 查询泄露、流量审计与域名污染风险，纯本地匹配消除首次建连时延。
+   * **潜在分流影响**：判定完全依赖预设域名库；未收录的 CN 域名将无法触发 CN IP 判定，可能会被误分流至「漏网之鱼」并走代理（部分域名可能会出现无法加载或地区受限等问题），且其 UDP 443 会被拦截并回退至 TCP 传输。
+
+2. **移除 `no-resolve`（可选配置 / 分流精度优先）**：
+   * **识别机制**：域名未命中规则库时将触发实时 DNS 解析，通过返回的真实 IP 兜底比对，尽可能确保 CN 规则未收录的域名能准确识别走直连 (DIRECT)，避免 CN 域名或 IP 误走代理，并放行 QUIC 直连加速。
+   * **潜在代价与风险**：未命中的境外域名均需向上游发起解析，存在潜在 DNS 泄露风险，且每次解析会引入额外的网络往返时延 (RTT)，略微增加海外连接首次握手时间。
+
+---
+
+### 📅 2026.10.23
+
+1. 调整部分规则顺序
+2. 调整 `YouTube` 策略组：从 Streaming 中独立拆分
+3. 新增 `G&A-Push` 策略组：整合 Google FCM 与苹果 APNs 推送服务
+4. Meta 规则集策略指向由 `Proxy` 改为 `AI`：使用 Muse AI 过程中发现其会走 Instagram 与 Facebook 的 API 及 CDN，Meta规则集相关流量改为与 AI 流量统一出口，避免出口不一致带来的封号风险
+
+### `G&A-Push` 策略组 Tips：
+**1. 选择「Proxy」**
+* **作用**：使 Push 服务长连接经节点建立，海外应用（如 Telegram、X、Line、WhatsApp、Gmail等）后台可以正常推送
+* **注意（国内 App 推送可能异常）**：（如微信、手机银行、QQ、淘宝等）推送通知同样经 Push 下发，原本直达国内；本组选代理后将一并绕行海外节点。可能导致延迟或漏收推送
+
+**2. 选择「DIRECT」**
+* **作用**：推送流量直接经本地网络出站，国内应用（如微信、手机银行、QQ、淘宝等）推送通知直达国内CDN网络，链路最短、延迟最低
+* **注意（海外 App 推送可能异常）**：直连网络下 Push 推送可能被阻断，长连接无法建立，Telegram、X、Line、WhatsApp、Gmail 等海外应用漏收推送通知
+
+---
+
+### 📅 2026.09.22
+
+1. TUN 网络栈切换为自研 `mips`（Mihomo IP Stack）用户态协议栈，相较传统 gVisor 更加轻量且专为代理内核优化。（注：需更新至最新版 Mihomo 内核）
+2. 高频并发场景调优：针对高并发连接密集及 TCP/UDP (QUIC) 混合传输场景优化，优化偶发性网络卡顿。（如刷视频/网盘播放/B站等）
+3. 并发吞吐与能效表现：显著提升多路并发环境下的吞吐上限，同时优化单路传输能耗，兼顾高吞吐性能与低能耗表现。
+ <img width="1080" height="339" alt="telegram-cloud-photo-size-5-6149908103315525700-y" src="https://github.com/user-attachments/assets/b22345be-d4c5-4239-8bd3-6fd9529b7702" />
+
+---
+
+
+### 📅 2026.08.01
+
+1. TUN 模式新增 `route-exclude-address-set` 底层路由排除功能
+2. 绕过大陆 `Private-IP`、`Trackers-IP` 和 `China-IP` 流量
+3. 新增“链式代理”策略组，“家宽-手选”节点组
+4. DOMAIN-SUFFIX,steamcontent.com,国内直连 ，强制拦截所有 Steam 下载节点走直连
+5. 节点策略组新增 `empty-fallback: "REJECT"` 参数，修正此前节点组无节点时会自动使用 `COMPATIBLE`（直连）的安全隐患，现节点组没有匹配到节点时会直接拦截，彻底防止流量侧漏
+6. 添加hosts：services.googleapis.cn: services.googleapis.com，解决谷歌商店无法下载的问题
+7. Darwin 性能优化（macOS 原生网络 API 优化），开启 `recv-msg-x: true` 在高速下载时降低 CPU 占用
+8. Darwin 性能优化（macOS 原生网络 API 优化），默认关闭`send-msg-x: false` 防止在多线程大流量下载时诱发内核假死
+
+
+---
+
+### 📅 2026.05.18
+1. 修正smart权重锚点写法
+   
+---
+
+### 📅 2026.05.17
+1. 删除微软 Teams，各游戏平台CDN下载规则，仅保留游戏平台下载兜底规则
+2. 阿里云 DOH3 部分地区无法用，替换为阿里云和腾讯 DOH
+3. 替换 TikTok 规则，使用聚合 MRS 规则
+4. 添加 Speedtest 策略组
+5. 替换加密货币 icon
+   
+---
+
+### 📅 2026.04.22
+1. 隐藏节点地区故转策略组，仅在分流策略组显示故转策略组
+2. 添加手选策略组、Smart 节点权重描点
+3. 添加 PayPal 规则
+
+---
+
+### 📅 2026.04.13
+1. 添加 `Encrypted_DNS_IP` 和 `Category-DoH` 规则走 `REJECT`
+   > tips：禁止 APP 走软件内置加密 dns，尽量走下游 dns
+
+---
+
+### 📅 2026.04.08
+1. `BaseProvider` 请求头更新 `header`: `{User-Agent: ['clash.meta', 'mihomo/1.9.22']}`
+2. `fallback`、`select`、`smart` 等策略组健康筛查测试间隔调整为 60s
+3. 添加故障转移前置描点、低倍率故转 + `smart` 策略组
+4. 修正节点正则筛选
