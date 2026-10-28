@@ -6,7 +6,7 @@ hide_vpn_icon: false
 geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
 asn_db_url: https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
 proxy_latency_test_url: https://www.gstatic.com/generate_204
-direct_latency_test_url: https://www.baidu.com/generate_204
+direct_latency_test_url: https://connectivitycheck.platform.hicloud.com/generate_204
 compat_route: false
 include_all_networks: false
 include_apns: false
@@ -33,23 +33,21 @@ hijack_dns:
 - '*:53'
 dns:
   bootstrap:
-  - system
   - 223.5.5.5
   - 119.29.29.29
-  - 180.184.1.1
   upstreams:
     国内:
+    - system
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
     国外:
     - https://8.8.8.8/dns-query
     - https://1.1.1.1/dns-query
+    谷歌:
+    - https://8.8.8.8/dns-query
     系统DNS:
     - system
   forward:
-  - domain_suffix:
-      match: cn
-      value: 国内
   - domain_suffix:
       match: lan
       value: 系统DNS
@@ -59,6 +57,29 @@ dns:
   - domain_suffix:
       match: home.arpa
       value: 系统DNS
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/youtube.yaml
+      value: 谷歌
+      update_interval: 86400
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/google.yaml
+      value: 谷歌
+      update_interval: 86400
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/douyin.yaml
+      value: 国内
+      update_interval: 86400
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/apple.yaml
+      value: 国内
+      update_interval: 86400
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/httpdns.yaml
+      value: 国内
+      update_interval: 86400
+  - domain_suffix:
+      match: cn
+      value: 国内
   - proxy_rule_set:
       match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cn.yaml
       value: 国内
