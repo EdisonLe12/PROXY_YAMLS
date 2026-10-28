@@ -28,7 +28,6 @@ real_ip_domains:
 - '*.local'
 - '*.cn'
 - '*.push.apple.com'
-- services.googleapis.cn
 hijack_dns:
 - '*:53'
 dns:
@@ -82,8 +81,6 @@ dns:
   - domain_wildcard:
       match: '*'
       value: 国外
-  hosts:
-    services.googleapis.cn: services.googleapis.com
   proxy_nameservers:
   - https://dns.alidns.com/dns-query
   - https://doh.pub/dns-query
