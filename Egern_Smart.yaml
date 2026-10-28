@@ -249,22 +249,6 @@ policy_groups:
     icon: https://raw.githubusercontent.com/chaoscard/proxyrules/master/Bitcoin.png
     hidden: false
 - select:
-    name: G&A-Push
-    policies:
-    - 香港-故转
-    - 日本-故转
-    - 狮城-故转
-    - 美国-故转
-    - 台湾-故转
-    - 家宽-故转
-    - Reality
-    - 低倍率-故转
-    - 高倍率-手选
-    - 冷门节点-手选
-    - 全部节点-手选
-    icon: https://img.icons8.com/fluency/256/push-notifications.png
-    hidden: false
-- select:
     name: Apple
     policies:
     - 香港-故转
@@ -886,63 +870,15 @@ policy_groups:
 - select:
     name: 链式代理
     policies:
-    - 链式香港
-    - 链式日本
-    - 链式狮城
-    - 链式台湾
-    - 链式美国
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 台湾-故转
+        - 美国-故转
+        - 冷门节点-手选
+        - 全部节点-手选
     icon: https://img.icons8.com/fluency/256/workflow.png
-    hidden: true
-- select:
-    name: 链式香港
-    policies:
-    - 优质服务商
-    - 次优服务商
-    - 备用服务商
-    flatten: true
-    filter: (?i)(港|🇭🇰|hong\s*kong|(?<![A-Za-z])hk(?![A-Za-z])|(?<![A-Za-z])hkg(?![A-Za-z]))
-    hidden: true
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
-- select:
-    name: 链式台湾
-    policies:
-    - 优质服务商
-    - 次优服务商
-    - 备用服务商
-    flatten: true
-    filter: (?i)(?!.*(免费|家宽)).*(台|🇹🇼|taiwan|taipei|(?<![A-Za-z])tw(?![A-Za-z])|(?<![A-Za-z])twn(?![A-Za-z])|tpe|tsa|khh).*
-    hidden: true
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
-- select:
-    name: 链式日本
-    policies:
-    - 优质服务商
-    - 次优服务商
-    - 备用服务商
-    flatten: true
-    filter: (?i)(?!.*(尼日|免费|家宽)).*(日|🇯🇵|japan|tokyo|osaka|(?<![A-Za-z])jp(?![A-Za-z])|(?<![A-Za-z])jpn(?![A-Za-z])|nrt|hnd|kix|cts|fuk).*
-    hidden: true
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
-- select:
-    name: 链式狮城
-    policies:
-    - 优质服务商
-    - 次优服务商
-    - 备用服务商
-    flatten: true
-    filter: (?i)(?!.*(免费|家宽)).*(坡|狮城|🇸🇬|singapore|(?<![A-Za-z])sg(?![A-Za-z])|sgp|sin|xsp).*
-    hidden: true
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
-- select:
-    name: 链式美国
-    policies:
-    - 优质服务商
-    - 次优服务商
-    - 备用服务商
-    flatten: true
-    filter: (?i)(?!.*(南美|免费|家宽)).*(美|🇺🇸|united\s*states|america|(?<![A-Za-z])us(?![A-Za-z])|(?<![A-Za-z])usa(?![A-Za-z])|sjc|jfk|lax|ord|atl|dfw|sfo|mia|sea|iad).*
-    hidden: true
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+    hidden: false
 - select:
     name: Emby专用-手选
     policies:
