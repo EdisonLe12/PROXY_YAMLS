@@ -6,7 +6,7 @@ hide_vpn_icon: false
 geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
 asn_db_url: https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
 proxy_latency_test_url: https://www.gstatic.com/generate_204
-direct_latency_test_url: https://connectivitycheck.platform.hicloud.com/generate_204
+direct_latency_test_url: https://www.baidu.com/generate_204
 compat_route: false
 include_all_networks: false
 include_apns: false
