@@ -873,9 +873,9 @@ policy_groups:
     - 香港-故转
     - 日本-故转
     - 狮城-故转
-    - 台湾-故转
-        - 美国-故转
-        - 冷门节点-手选
+- 台湾-故转
+    - 美国-故转
+    - 冷门节点-手选
         - 全部节点-手选
     icon: https://img.icons8.com/fluency/256/workflow.png
     hidden: false
