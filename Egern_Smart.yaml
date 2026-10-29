@@ -119,6 +119,34 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
     hidden: false
 - select:
+    name: 链式代理
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 台湾-故转
+    - 美国-故转
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://img.icons8.com/fluency/256/workflow.png
+    hidden: false
+- select:
+    name: Google
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 美国-故转
+    - 台湾-故转
+    - 家宽-故转
+    - Reality
+    - 低倍率-故转
+    - 高倍率-手选
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Google_Search.png
+    hidden: false
+- select:
     name: Bing
     policies:
     - 香港-故转
@@ -295,22 +323,6 @@ policy_groups:
     - 冷门节点-手选
     - 全部节点-手选
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
-    hidden: false
-- select:
-    name: Google
-    policies:
-    - 香港-故转
-    - 日本-故转
-    - 狮城-故转
-    - 美国-故转
-    - 台湾-故转
-    - 家宽-故转
-    - Reality
-    - 低倍率-故转
-    - 高倍率-手选
-    - 冷门节点-手选
-    - 全部节点-手选
-    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Google_Search.png
     hidden: false
 - fallback:
     name: 香港-故转
@@ -866,18 +878,6 @@ policy_groups:
     flatten: true
     filter: (?i)^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|剩余|重置|套餐|距离|免费|家宽)).+$
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
-    hidden: false
-- select:
-    name: 链式代理
-    policies:
-    - 香港-故转
-    - 日本-故转
-    - 狮城-故转
-    - 台湾-故转
-    - 美国-故转
-    - 冷门节点-手选
-    - 全部节点-手选
-    icon: https://img.icons8.com/fluency/256/workflow.png
     hidden: false
 - select:
     name: Emby专用-手选
