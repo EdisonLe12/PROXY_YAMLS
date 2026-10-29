@@ -63,10 +63,6 @@ dns:
       value: 国外
       update_interval: 86400
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/douyin.yaml
-      value: 国内
-      update_interval: 86400
-  - proxy_rule_set:
       match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/apple.yaml
       value: 国内
       update_interval: 86400
