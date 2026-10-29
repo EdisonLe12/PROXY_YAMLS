@@ -100,7 +100,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Proxy.png
     hidden: false
 - select:
@@ -129,7 +129,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
     hidden: false
 - select:
@@ -146,7 +146,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Google_Search.png
     hidden: false
 - select:
@@ -163,7 +163,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Bing.png
     hidden: false
 - select:
@@ -180,7 +180,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png
     hidden: false
 - select:
@@ -197,7 +197,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/YouTube.png
     hidden: false
 - select:
@@ -214,7 +214,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/TikTok_1.png
     hidden: false
 - select:
@@ -233,7 +233,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
     hidden: false
 - select:
@@ -250,7 +250,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Speedtest.png
     hidden: false
 - select:
@@ -267,7 +267,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/PayPal.png
     hidden: false
 - select:
@@ -284,12 +284,13 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://raw.githubusercontent.com/chaoscard/proxyrules/master/Bitcoin.png
     hidden: false
 - select:
     name: Apple
     policies:
+    - DIRECT
     - 香港-故转
     - 日本-故转
     - 台湾-故转
@@ -301,12 +302,12 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Apple.png
     hidden: false
 - select:
     name: Microsoft
     policies:
+    - DIRECT
     - 香港-故转
     - 日本-故转
     - 台湾-故转
@@ -318,7 +319,6 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
     hidden: false
 - select:
@@ -335,7 +335,7 @@ policy_groups:
     - 高倍率-手选
     - 冷门节点-手选
     - 全部节点-手选
-    - 国内直连
+    - DIRECT
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
     hidden: false
 - fallback:
@@ -909,12 +909,6 @@ policy_groups:
     filter: (?i)^(?!.*住宅).+$
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
     hidden: true
-- select:
-    name: 国内直连
-    policies:
-    - DIRECT
-    icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
-    hidden: true
 - external:
     name: 优质服务商
     type: select
@@ -971,27 +965,27 @@ rules:
     name: PikPak 地区检测域名
 - domain_keyword:
     match: dl-a10b-
-    policy: 国内直连
+    policy: DIRECT
     name: PikPak 下载直连
 - domain_keyword:
     match: dl-z01a-
-    policy: 国内直连
+    policy: DIRECT
     name: PikPak 下载直连
 - domain_regex:
     match: ^dl-[A-Za-z0-9-]+\.mypikpak\.com$
-    policy: 国内直连
+    policy: DIRECT
     name: PikPak 下载直连
 - domain_suffix:
     match: lan
-    policy: 国内直连
+    policy: DIRECT
     name: 本地域名直连
 - domain_suffix:
     match: local
-    policy: 国内直连
+    policy: DIRECT
     name: 本地域名直连
 - domain_suffix:
     match: home.arpa
-    policy: 国内直连
+    policy: DIRECT
     name: 本地域名直连
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/ai.yaml
@@ -1098,12 +1092,12 @@ rules:
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cn.yaml
-    policy: 国内直连
+    policy: DIRECT
     name: 中国大陆域名直连
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/cncidr.yaml
-    policy: 国内直连
+    policy: DIRECT
     name: 中国大陆 IP 地址集直连
     update_interval: 86400
 - default:
