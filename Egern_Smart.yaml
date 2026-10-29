@@ -103,6 +103,18 @@ policy_groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Proxy.png
     hidden: false
 - select:
+    name: 链式代理
+    policies:
+    - 香港-故转
+    - 日本-故转
+    - 狮城-故转
+    - 台湾-故转
+    - 美国-故转
+    - 冷门节点-手选
+    - 全部节点-手选
+    icon: https://img.icons8.com/fluency/256/workflow.png
+    hidden: false
+- select:
     name: AI
     policies:
     - 香港-故转
@@ -117,18 +129,6 @@ policy_groups:
     - 冷门节点-手选
     - 全部节点-手选
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
-    hidden: false
-- select:
-    name: 链式代理
-    policies:
-    - 香港-故转
-    - 日本-故转
-    - 狮城-故转
-    - 台湾-故转
-    - 美国-故转
-    - 冷门节点-手选
-    - 全部节点-手选
-    icon: https://img.icons8.com/fluency/256/workflow.png
     hidden: false
 - select:
     name: Google
@@ -327,14 +327,14 @@ policy_groups:
 - fallback:
     name: 香港-故转
     policies:
-    - 🇭🇰香港-手选
-    - 🇭🇰香港-智能
+    - 香港-手选
+    - 香港-智能
     interval: 180
     timeout: 5
     hidden: true
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
 - select:
-    name: 🇭🇰香港-手选
+    name: 香港-手选
     policies:
     - 优质服务商
     - 次优服务商
@@ -389,7 +389,7 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
     hidden: true
 - smart:
-    name: 🇭🇰香港-智能
+    name: 香港-智能
     policies:
     - 香港-优质自动
     - 香港-次优自动
@@ -405,14 +405,14 @@ policy_groups:
 - fallback:
     name: 日本-故转
     policies:
-    - 🇯🇵日本-手选
-    - 🇯🇵日本-智能
+    - 日本-手选
+    - 日本-智能
     interval: 180
     timeout: 5
     hidden: true
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
 - select:
-    name: 🇯🇵日本-手选
+    name: 日本-手选
     policies:
     - 优质服务商
     - 次优服务商
@@ -467,7 +467,7 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
     hidden: true
 - smart:
-    name: 🇯🇵日本-智能
+    name: 日本-智能
     policies:
     - 日本-优质自动
     - 日本-次优自动
@@ -483,14 +483,14 @@ policy_groups:
 - fallback:
     name: 狮城-故转
     policies:
-    - 🇸🇬狮城-手选
-    - 🇸🇬狮城-智能
+    - 狮城-手选
+    - 狮城-智能
     interval: 180
     timeout: 5
     hidden: true
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
 - select:
-    name: 🇸🇬狮城-手选
+    name: 狮城-手选
     policies:
     - 优质服务商
     - 次优服务商
@@ -545,7 +545,7 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
     hidden: true
 - smart:
-    name: 🇸🇬狮城-智能
+    name: 狮城-智能
     policies:
     - 狮城-优质自动
     - 狮城-次优自动
@@ -561,14 +561,14 @@ policy_groups:
 - fallback:
     name: 美国-故转
     policies:
-    - 🇺🇸美国-手选
-    - 🇺🇸美国-智能
+    - 美国-手选
+    - 美国-智能
     interval: 180
     timeout: 5
     hidden: true
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
 - select:
-    name: 🇺🇸美国-手选
+    name: 美国-手选
     policies:
     - 优质服务商
     - 次优服务商
@@ -623,7 +623,7 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
     hidden: true
 - smart:
-    name: 🇺🇸美国-智能
+    name: 美国-智能
     policies:
     - 美国-优质自动
     - 美国-次优自动
@@ -639,14 +639,14 @@ policy_groups:
 - fallback:
     name: 台湾-故转
     policies:
-    - 🇹🇼台湾-手选
-    - 🇹🇼台湾-智能
+    - 台湾-手选
+    - 台湾-智能
     interval: 180
     timeout: 5
     hidden: true
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
 - select:
-    name: 🇹🇼台湾-手选
+    name: 台湾-手选
     policies:
     - 优质服务商
     - 次优服务商
@@ -701,7 +701,7 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
     hidden: true
 - smart:
-    name: 🇹🇼台湾-智能
+    name: 台湾-智能
     policies:
     - 台湾-优质自动
     - 台湾-次优自动
@@ -1056,6 +1056,11 @@ rules:
     match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/crypto.yaml
     policy: Crypto
     name: Crypto
+    update_interval: 86400
+- rule_set:
+    match: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/egern/google.yaml
+    policy: Google
+    name: Google 全家桶
     update_interval: 86400
 - rule_set:
     match: https://raw.githubusercontent.com/Repcz/Tool/X/Egern/Rules/Telegram.yaml
