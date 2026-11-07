@@ -333,6 +333,44 @@ policy_groups:
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
     hidden: false
 - fallback:
+    name: 家宽-故转
+    policies:
+    - 家宽-手选
+    - 家宽-智能
+    interval: 180
+    timeout: 5
+    hidden: true
+    icon: https://img.icons8.com/fluency/256/home.png
+- select:
+    name: 家宽-手选
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    prev_hop: 链式代理
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: false
+- auto_test:
+    name: 家宽-落地自动
+    policies:
+    - 落地服务商
+    flatten: true
+    filter: (?i)(家宽|动态|EDU)
+    prev_hop: 链式代理
+    interval: 180
+    tolerance: 50
+    timeout: 5
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- smart:
+    name: 家宽-智能
+    policies:
+    - 家宽-落地自动
+    priorities:
+      ^家宽-落地自动$: 0
+    icon: https://img.icons8.com/fluency/256/home.png
+    hidden: true
+- fallback:
     name: 香港-故转
     policies:
     - 香港-手选
@@ -706,44 +744,6 @@ policy_groups:
       ^台湾-次优自动$: 1.0
       ^台湾-备用自动$: 1.5
     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
-    hidden: true
-- fallback:
-    name: 家宽-故转
-    policies:
-    - 家宽-手选
-    - 家宽-智能
-    interval: 180
-    timeout: 5
-    hidden: true
-    icon: https://img.icons8.com/fluency/256/home.png
-- select:
-    name: 家宽-手选
-    policies:
-    - 落地服务商
-    flatten: true
-    filter: (?i)(家宽|动态|EDU)
-    prev_hop: 链式代理
-    icon: https://img.icons8.com/fluency/256/home.png
-    hidden: false
-- auto_test:
-    name: 家宽-落地自动
-    policies:
-    - 落地服务商
-    flatten: true
-    filter: (?i)(家宽|动态|EDU)
-    prev_hop: 链式代理
-    interval: 180
-    tolerance: 50
-    timeout: 5
-    icon: https://img.icons8.com/fluency/256/home.png
-    hidden: true
-- smart:
-    name: 家宽-智能
-    policies:
-    - 家宽-落地自动
-    priorities:
-      ^家宽-落地自动$: 0
-    icon: https://img.icons8.com/fluency/256/home.png
     hidden: true
 - select:
     name: Reality
