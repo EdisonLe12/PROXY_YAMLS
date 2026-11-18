@@ -879,6 +879,10 @@ rules:
     match: access.pikpak.me
     policy: REJECT
     name: PikPak 地区检测域名
+- domain_suffix:
+    match: msmp.abchina.com.cn
+    policy: REJECT
+    name: 农行 VPN 检测域名
 - domain_keyword:
     match: dl-a10b-
     policy: DIRECT
