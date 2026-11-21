@@ -52,7 +52,7 @@ FilterHK: &FilterHK { filter: '^(?i)(?!.*免费).*(港|🇭🇰|hong\s?kong|(?<!
 FilterJK: &FilterJK { filter: '(?i)(家宽|住宅|原生\s*IP|家庭宽带|\bISP\b|\bRES\b|residential)', icon: 'https://img.icons8.com/fluency/256/home.png' }
 
 # Smart 优先级权重
-PriorityLR: &PriorityLR "0.01:9;0.1:8;0.2:7;实验:7;0.3:6;0.4:5;0.5:4;0.6:3;0.7:2;0.8:1" # 低倍率优先级
+PriorityLR: &PriorityLR '0\.01:9;0\.1:8;0\.2:7;实验:7;0\.3:6;0\.4:5;0\.5:4;0\.6:3;0\.7:2;0\.8:1' # 低倍率优先级
 PriorityNR: &PriorityNR "优:3;中:2;次:1;备:0.5" # 按订阅质量排序优先级
 
 # 规则集行为模板
