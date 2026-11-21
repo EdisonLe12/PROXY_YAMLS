@@ -23,7 +23,7 @@ BaseProvider: &BaseProvider { type: http, interval: 86400, proxy: 国内直连, 
 
 # 策略组基础配置模板
 BaseFB:   &BaseFB   { type: fallback,     interval: 60, lazy: true, timeout: 3000, max-failed-times: 2, empty-fallback: "REJECT", url: 'https://www.gstatic.com/generate_204', hidden: true }
-BaseST:   &BaseST   { type: smart,        interval: 60, lazy: true, empty-fallback: "REJECT", url: 'https://www.gstatic.com/generate_204', hidden: true, uselightgbm: true }
+BaseST:   &BaseST   { type: smart,        interval: 60, lazy: true, timeout: 3000, max-failed-times: 2, empty-fallback: "REJECT", url: 'https://www.gstatic.com/generate_204', hidden: true, uselightgbm: true }
 BaseSL:   &BaseSL   { type: select,       interval: 60, lazy: true, empty-fallback: "REJECT", url: 'https://www.gstatic.com/generate_204' }
 BaseLB:   &BaseLB   { type: load-balance, interval: 60, lazy: true, empty-fallback: "REJECT", url: 'https://www.gstatic.com/generate_204' }
 
