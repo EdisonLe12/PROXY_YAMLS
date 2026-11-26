@@ -171,7 +171,7 @@ tun:
   auto-detect-interface: true              # 自动检测网络接口
   auto-redirect: true                      # 自动配置 iptables 重定向
   endpoint-independent-nat: true           # 独立 NAT (Full Cone)，优化游戏/P2P
-  route-exclude-address-set:               # 绕过大陆 匹配大陆IP-CIDR（流量不进入代理） 
+  route-exclude-address-set:               # 绕过大陆 匹配大陆IP-CIDR（流量不进入内核） 
     - Apple-CN
     - MicrosoftCN
     - GameDownload
